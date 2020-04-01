@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $fillabel = [
+    protected $fillable = [
         'author_id',
         'company_id',
+        'genre_id',
         'title'
     ];
 

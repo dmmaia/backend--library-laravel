@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Author;
+use App\Genre;
 
-class AuthorController extends Controller
+class GenreController extends Controller
 {
     public function index(){
-        return Author::all();
+        return Genre::all();
     }
 
     /**
@@ -16,7 +16,7 @@ class AuthorController extends Controller
      *
      */
     public function store(Request $request){
-        Author::create($request->all());
+        Genre::create($request->all());
     }
 
     /**
@@ -25,7 +25,7 @@ class AuthorController extends Controller
      */
     public function show($id)
     {
-        return Author::findOrFail($id);
+        return Genre::findOrFail($id);
     }
 
     /**
@@ -34,8 +34,8 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $author = Author::findOrFail($id);
-        $author->update($request->all());
+        $genre = Genre::findOrFail($id);
+        $genre->update($request->all());
     }
 
     /**
@@ -44,7 +44,7 @@ class AuthorController extends Controller
      */
     public function destroy($id)
     {
-        $author = Author::findOrFail($id);
-        $author->delete();
+        $genre = Genre::findOrFail($id);
+        $genre->delete();
     }
 }
