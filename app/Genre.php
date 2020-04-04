@@ -8,7 +8,7 @@ class Genre extends Model
 {
 
     protected $fillable = [
-        'name'
+        'genre_name'
     ];
 
     public function books(){

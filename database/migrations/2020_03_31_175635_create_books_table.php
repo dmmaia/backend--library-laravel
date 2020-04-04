@@ -17,15 +17,26 @@ class CreateBooksTable extends Migration
             $table->increments('id');
 
             $table->integer('author_id')->nullable()->unsigned();
-            $table->foreign('author_id')->references('id')->on('authors');
+            $table->foreign('author_id')->
+            references('id')->
+            on('authors')->
+            onDelete('cascade');
 
             $table->integer('company_id')->nullable()->unsigned();
-            $table->foreign('company_id')->references('id')->on('publishing_companies');
+            $table->foreign('company_id')->
+            references('id')->
+            on('publishing_companies')->
+            onDelete('cascade');
 
             $table->integer('genre_id')->nullable()->unsigned();
-            $table->foreign('genre_id')->references('id')->on('genres');
+            $table->foreign('genre_id')->
+            references('id')->
+            on('genres')->
+            onDelete('cascade');
 
             $table->string('title', 100);
+
+            $table->integer('year');
 
             $table->timestamps();
         });

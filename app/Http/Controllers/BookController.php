@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 use Illuminate\Http\Request;
 use App\Book;
 
 class BookController extends Controller
 {
     public function index(){
-        return Book::all();
+        return DB::table('books')
+        ->join('authors', 'authors.id', '=', 'books.author_id')
+        ->join('publishing_companies', 'publishing_companies.id', '=', 'books.company_id')
+        ->join('genres', 'genres.id', '=', 'books.genre_id')
+        ->select('books.id','books.title', 'books.year', 'authors.name', 'publishing_companies.company_name','genres.genre_name')
+        ->get();
     }
 
     /**
