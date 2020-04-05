@@ -16,7 +16,7 @@ Versão PHP 7.3.11
 
  - Após instala-lo, deve se executar o comando "composer update" na pasta do projeto para que sejam instaladas as dependências.
 
- - Deve ser criado um banco de dados com nome ## "book_store"
+ - Deve ser criado um banco de dados com nome "book_store"
 
  - Em seguida, executar o comando "php artisan migrate" para que sejam criadas as tabelas do banco de dados.
 
