@@ -14,7 +14,7 @@ class BookController extends Controller
         ->join('authors', 'authors.id', '=', 'books.author_id')
         ->join('publishing_companies', 'publishing_companies.id', '=', 'books.company_id')
         ->join('genres', 'genres.id', '=', 'books.genre_id')
-        ->select('books.id','books.title', 'books.year', 'authors.name', 'publishing_companies.company_name','genres.genre_name')
+        ->select('books.id','books.title', 'books.year', 'books.author_id', 'books.company_id', 'books.genre_id', 'authors.name', 'publishing_companies.company_name','genres.genre_name')
         ->get();
     }
 
@@ -32,7 +32,13 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        return Book::findOrFail($id);
+        return DB::table('books')
+        ->join('authors', 'authors.id', '=', 'books.author_id')
+        ->join('publishing_companies', 'publishing_companies.id', '=', 'books.company_id')
+        ->join('genres', 'genres.id', '=', 'books.genre_id')
+        ->select('books.id','books.title', 'books.year', 'books.author_id', 'books.company_id', 'books.genre_id', 'authors.name', 'publishing_companies.company_name','genres.genre_name')
+		->where('books.id', $id)
+        ->get();
     }
 
     /**
